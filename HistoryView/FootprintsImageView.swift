@@ -13,7 +13,7 @@ protocol FootprintsImageViewDelegate: class {
 }
 
 class FootprintsImageView: UIImageView {
-    weak var delegate: FootprintsImageViewDelegate? = nil
+    weak var delegate: FootprintsImageViewDelegate?
     var navigationIndex = 0
     
     override init(image: UIImage!) {

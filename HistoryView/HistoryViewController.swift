@@ -13,8 +13,8 @@ enum Footprints: String {
 }
 
 class HistoryViewController: UIViewController {
-    var historyRowNum = 3
-    let footViewCtr = FootprintsViewController()
+    var historyRowNumber = 3
+    let footViewController = FootprintsViewController()
     
     convenience init() {
         self.init(nibName: nil, bundle: nil)
@@ -37,11 +37,11 @@ class HistoryViewController: UIViewController {
 // MARK: Footprints
 extension HistoryViewController {
     func popFootprintsView() {
-        if let viewCtrs = self.navigationController?.viewControllers {
-            footViewCtr.rowNum = historyRowNum
-            footViewCtr.navBar.backgroundColor = UINavigationBar.appearance().barTintColor
-            footViewCtr.setFootprints(viewCtrs)
-            self.presentViewController(footViewCtr, animated: true, completion: { () -> Void in
+        if let viewControllers = self.navigationController?.viewControllers {
+            footViewController.rowNumber = historyRowNumber
+            footViewController.navigationBar.backgroundColor = UINavigationBar.appearance().barTintColor
+            footViewController.setFootprints(viewControllers)
+            self.presentViewController(footViewController, animated: true, completion: { () -> Void in
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "back:", name: Footprints.Back.rawValue, object: nil)
             })
         }
