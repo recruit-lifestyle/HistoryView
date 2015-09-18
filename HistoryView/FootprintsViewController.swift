@@ -9,14 +9,16 @@
 import UIKit
 
 class FootprintsViewController: UIViewController {
-    var rowNumber: Int?
+    var rowNumber = 3
     private var viewControllers = [AnyObject]()
     
     let navigationBar = UIView(frame: CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.width, 64.0))
     var closeButton = UIImageView(image: UIImage(named: "Close")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
     var titleLabel = UILabel(frame: CGRectMake(0.0, 20.0, UIScreen.mainScreen().bounds.width, 44.0))
     
-    private let scrollView = UIScrollView(frame: CGRectMake(0.0, 64.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 64.0))
+    private let collectionView = UICollectionView(frame: CGRectMake(0.0, 64.0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height - 64.0), collectionViewLayout: UICollectionViewLayout())
+    private let layout = UICollectionViewFlowLayout()
+    private let space: CGFloat = 10.0
     
     convenience init() {
         self.init(nibName: nil, bundle: nil)
@@ -32,7 +34,13 @@ class FootprintsViewController: UIViewController {
         navigationBar.addSubview(titleLabel)
         
         self.view.addSubview(navigationBar)
-        self.view.addSubview(scrollView)
+        
+        layout.sectionInset = UIEdgeInsetsMake(space, space, space, space)
+        collectionView.registerClass(FootprintsCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = self.view.backgroundColor
+        self.view.addSubview(collectionView)
     }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -41,6 +49,31 @@ class FootprintsViewController: UIViewController {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+}
+
+extension FootprintsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Footprints.Back.rawValue, object: self, userInfo: ["Index": indexPath.row])
+    }
+
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewControllers.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as? FootprintsCollectionViewCell {
+            if let preViewCtr = viewControllers[indexPath.row] as? UIViewController {
+                cell.footprintsImageView.image = preViewCtr.view.screenshot()
+                cell.footprintsImageView.delegate = self
+                cell.footprintsImageView.navigationIndex = indexPath.row
+                cell.footprintsImageView.frame = CGRectMake(0.0, 0.0, layout.itemSize.width, layout.itemSize.height)
+            }
+            return cell
+        } else {
+            return FootprintsCollectionViewCell()
+        }
     }
 }
 
@@ -54,29 +87,18 @@ extension FootprintsViewController {
 // MARK: Footprints
 extension FootprintsViewController {
     func setFootprints(viewCtrs: [AnyObject]) {
-        let space: CGFloat = 10.0
-        let areaSize = CGSizeMake(self.view.frame.size.width/CGFloat(rowNumber!) - (space * 2.0),
-            self.view.frame.size.height/CGFloat(rowNumber!) - (space * 2.0))
-        for (index, viewCtr) in enumerate(viewCtrs) {
-            if let preViewCtr = viewCtr as? UIViewController {
-                let screenshot = preViewCtr.view.screenshot()
-                let footprintsImageView = FootprintsImageView(image: screenshot)
-                footprintsImageView.delegate = self
-                footprintsImageView.navigationIndex = index
-                footprintsImageView.frame = CGRectMake(CGFloat(index%rowNumber!) * (areaSize.width + (space * 2.0)) + space,
-                    CGFloat(index/rowNumber!) * (areaSize.height + (space * 2.0)) + space,
-                    areaSize.width, areaSize.height)
-                scrollView.addSubview(footprintsImageView)
-            }
-        }
-        scrollView.contentSize.height = CGFloat((viewCtrs.count - 1)/rowNumber! + 1) * self.view.frame.size.height/CGFloat(rowNumber!)
+        viewControllers = viewCtrs
+        
+        layout.itemSize = CGSizeMake(self.view.frame.size.width/CGFloat(rowNumber) - (space * 2.0),
+                                     self.view.frame.size.height/CGFloat(rowNumber) - (space * 2.0))
+        collectionView.collectionViewLayout = layout
+        collectionView.reloadData()
     }
 }
 
 // MARK: FootprintsImageViewDelegate
 extension FootprintsViewController: FootprintsImageViewDelegate {
     func footprintsTapped(index: Int) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName(Footprints.Back.rawValue, object: self, userInfo: ["Index": index])
+        collectionView(collectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: index, inSection: 0))
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482CEAE51BABED4D00BE44CF /* FootprintsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482CEAE41BABED4D00BE44CF /* FootprintsCollectionViewCell.swift */; };
 		484690421B7C7DD500E25899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484690411B7C7DD500E25899 /* AppDelegate.swift */; };
 		484690441B7C7DD500E25899 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484690431B7C7DD500E25899 /* ViewController.swift */; };
 		484690491B7C7DD500E25899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 484690481B7C7DD500E25899 /* Images.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		482CEAE41BABED4D00BE44CF /* FootprintsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FootprintsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4846903C1B7C7DD500E25899 /* HistoryView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistoryView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		484690401B7C7DD500E25899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484690411B7C7DD500E25899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				488EAB2E1BA6577700CD0B96 /* FootprintsViewController.swift */,
+				482CEAE41BABED4D00BE44CF /* FootprintsCollectionViewCell.swift */,
 				488EAB301BA6578800CD0B96 /* FootprintsImageView.swift */,
 			);
 			name = FootprintsView;
@@ -266,6 +269,7 @@
 			files = (
 				488EAB331BA6579700CD0B96 /* UIView+UIImage.swift in Sources */,
 				488EAB2F1BA6577700CD0B96 /* FootprintsViewController.swift in Sources */,
+				482CEAE51BABED4D00BE44CF /* FootprintsCollectionViewCell.swift in Sources */,
 				488EAB2D1BA6576700CD0B96 /* HistoryViewController.swift in Sources */,
 				484690441B7C7DD500E25899 /* ViewController.swift in Sources */,
 				484690421B7C7DD500E25899 /* AppDelegate.swift in Sources */,

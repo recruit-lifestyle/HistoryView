@@ -16,8 +16,12 @@ class FootprintsImageView: UIImageView {
     weak var delegate: FootprintsImageViewDelegate?
     var navigationIndex = 0
     
-    override init(image: UIImage!) {
-        super.init(image: image)
+    convenience init() {
+        self.init(frame: CGRectZero)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.userInteractionEnabled = true
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tapped:"))
     }
