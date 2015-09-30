@@ -12,7 +12,7 @@ class ViewController: HistoryViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let index: Int = self.navigationController?.viewControllers.count {
-            self.title = "画面\(index)"
+            self.title = "Screen\(index)"
             setBackgroundColor(index)
         }
         
@@ -35,29 +35,29 @@ class ViewController: HistoryViewController {
 extension ViewController {
     func setBackgroundColor(index: Int) {
         switch index % 4 {
-        case 0:
-            return self.view.backgroundColor = .blackColor()
-        case 1:
-            return self.view.backgroundColor = .yellowColor()
-        case 2:
-            return self.view.backgroundColor = .blueColor()
-        case 3:
-            return self.view.backgroundColor = .redColor()
-        default:
-            return self.view.backgroundColor = .whiteColor()
+            case 0:
+                return self.view.backgroundColor = .blackColor()
+            case 1:
+                return self.view.backgroundColor = .yellowColor()
+            case 2:
+                return self.view.backgroundColor = .blueColor()
+            case 3:
+                return self.view.backgroundColor = .redColor()
+            default:
+                return self.view.backgroundColor = .whiteColor()
         }
     }
 }
 
 // MARK: Touch Action
 extension ViewController {
-    func popViewCtr(btn: UIBarButtonItem) {
+    func popViewCtr(button: UIBarButtonItem) {
         let viewController = ViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func popFootprintsViewCtr(btn: UIButton) {
-        btn.highlighted = false
+    func popFootprintsViewCtr(button: UIButton) {
+        button.highlighted = false
         popFootprintsView()
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class FootprintsViewController: UIViewController {
     var rowNumber = 3
-    private var viewControllers = [AnyObject]()
+    var viewControllers = [AnyObject]()
     
     let navigationBar = UIView(frame: CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.width, 64.0))
     var closeButton = UIImageView(image: UIImage(named: "Close")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
@@ -86,9 +86,7 @@ extension FootprintsViewController {
 
 // MARK: Footprints
 extension FootprintsViewController {
-    func setFootprints(viewCtrs: [AnyObject]) {
-        viewControllers = viewCtrs
-        
+    func setFootprints() {        
         layout.itemSize = CGSizeMake(self.view.frame.size.width/CGFloat(rowNumber) - (space * 2.0),
                                      self.view.frame.size.height/CGFloat(rowNumber) - (space * 2.0))
         collectionView.collectionViewLayout = layout

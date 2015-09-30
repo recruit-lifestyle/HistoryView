@@ -39,8 +39,9 @@ extension HistoryViewController {
     func popFootprintsView() {
         if let viewControllers = self.navigationController?.viewControllers {
             footViewController.rowNumber = historyRowNumber
+            footViewController.viewControllers = viewControllers
             footViewController.navigationBar.backgroundColor = UINavigationBar.appearance().barTintColor
-            footViewController.setFootprints(viewControllers)
+            footViewController.setFootprints()
             self.presentViewController(footViewController, animated: true, completion: { () -> Void in
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "back:", name: Footprints.Back.rawValue, object: nil)
             })
