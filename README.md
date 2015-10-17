@@ -45,7 +45,7 @@ class ViewController: HistoryViewController {
 ## Author
 
 Takeshi Ihara, t_ihara@waku-2.com  
-Keisuke Toyoshima, k_toyoshima@waku-2.com
+Keisuke Toyoshima, k_toyoshima@r.recruit.co.jp
 
 ## License
 
