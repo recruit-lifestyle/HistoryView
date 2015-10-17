@@ -1,0 +1,14 @@
+PODS:
+  - HistoryView (0.1.0)
+
+DEPENDENCIES:
+  - HistoryView (from `../`)
+
+EXTERNAL SOURCES:
+  HistoryView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  HistoryView: 8eb9be339e54c59aae3739d344d55fd5a8dfd203
+
+COCOAPODS: 0.39.0

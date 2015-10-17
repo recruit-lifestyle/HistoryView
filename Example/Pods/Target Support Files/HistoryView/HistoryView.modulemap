@@ -1,0 +1,6 @@
+framework module HistoryView {
+  umbrella header "HistoryView-umbrella.h"
+
+  export *
+  module * { export * }
+}

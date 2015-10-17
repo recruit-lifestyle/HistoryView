@@ -8,23 +8,21 @@
 
 Pod::Spec.new do |s|
   s.name             = "HistoryView"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of HistoryView."
+  s.version          = "1.0.0"
+  s.summary          = "HistoryView` enables to manage and transition preView."
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+                       HistoryView
+
+                       enables to manage and transition preView.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/HistoryView"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/recruit-lifestyle/HistoryView"
+  s.screenshots      = "https://github.com/recruit-lifestyle/HistoryView/wiki/images/screen_shot.png"
   s.license          = 'MIT'
-  s.author           = { "Nonchalant" => "afrontier829@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/HistoryView.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "Nonchalant" => "t_ihara@waku-2.com" }
+  s.source           = { :git => "https://github.com/recruit-lifestyle/HistoryView.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/l_index'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
@@ -34,7 +32,4 @@ Pod::Spec.new do |s|
     'HistoryView' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
