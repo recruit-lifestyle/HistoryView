@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'HistoryView_Example', :exclusive => true do
+  pod "HistoryView", :path => "../"
+end
+
+target 'HistoryView_Tests', :exclusive => true do
+  pod "HistoryView", :path => "../"
+
+  
+end
