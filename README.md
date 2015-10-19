@@ -42,10 +42,11 @@ class ViewController: HistoryViewController {
 }
 ```
 
-## Author
+## Credit
 
-Takeshi Ihara, t_ihara@waku-2.com  
-Keisuke Toyoshima, k_toyoshima@r.recruit.co.jp
+Sidebox is owned and maintained by RECRUIT LIFESTYLE CO., LTD.
+
+Sidebox was originally created by [Takeshi Ihara](https://github.com/Nonchalant).
 
 ## License
 
